@@ -133,6 +133,7 @@ def main():
                         interpolation=cv2.INTER_AREA
                     )
                 result = model.infer(frame)
+                if negative: result = 255 - result     
                 frame = np.concatenate((frame, cv2.cvtColor(src=result, code=cv2.COLOR_BGR2RGB)), axis=1)
                 cv2.imshow("Feed", frame)
 
